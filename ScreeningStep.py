@@ -1,5 +1,6 @@
 import abc
 import timeit
+import cv2
 
 
 class ScreeningStep:
@@ -71,6 +72,44 @@ class ExampleStep(ScreeningStep):
 
     def _run_step(self, image) -> int:
         print(self.output)
+        color = (255, 0, 0)
+        end_point = (220, 220)
+        start_point = (5, 5)
+        thickness = 2
+        image = cv2.rectangle(image, start_point, end_point, color, thickness)
         return ExampleStep.RUNNING
 
+    pass
+
+
+class MaskStep(ScreeningStep):
+
+    def __init__(self):
+        super.__init__("Mask", "Ensure you are wearing a mask", 10)
+        pass
+
+    def _run_step(self, image) -> int:
+        return ScreeningStep.RUNNING
+    pass
+
+
+class SelfTestStep(ScreeningStep):
+
+    def __init__(self):
+        super.__init__("Self Test", "Scan your self test result", 15)
+        pass
+
+    def _run_step(self, image) -> int:
+        return ScreeningStep.RUNNING
+    pass
+
+
+class VaccinePassportStep(ScreeningStep):
+
+    def __init__(self):
+        super.__init__("Vaccine Passport", "Scan the QR Code for your Proof of Vaccination", 15)
+        pass
+
+    def _run_step(self, image) -> int:
+        return ScreeningStep.RUNNING
     pass
