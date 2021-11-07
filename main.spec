@@ -28,24 +28,13 @@ a.binaries += TOC([
 ])
 
 exe = EXE(pyz,
-          a.scripts, 
-          [],
-          exclude_binaries=True,
+          a.scripts,
+          a.binaries,
+          a.zipfiles,
+          a.datas,
           name='main',
           debug=False,
-          bootloader_ignore_signals=False,
           strip=False,
           upx=True,
-          console=True,
-          disable_windowed_traceback=False,
-          target_arch=None,
-          codesign_identity=None,
-          entitlements_file=None )
-coll = COLLECT(exe,
-               a.binaries,
-               a.zipfiles,
-               a.datas, 
-               strip=False,
-               upx=True,
-               upx_exclude=[],
-               name='main')
+          runtime_tmpdir=None,
+          console=True )
