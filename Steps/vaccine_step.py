@@ -17,11 +17,12 @@ class VaccinePassportStep(BaseStep):
 
         if res == FAIL:
             text = "Please present your QR code"
+            cv2.putText(image, text, (175, 30), cv2.FONT_HERSHEY_DUPLEX,
+                        0.8, (30, 30, 200), 2, cv2.LINE_AA)
         if res == SUCCESS:
             text = "Thank you for the QR Code"
-
-        cv2.putText(image, text, (175, 30), cv2.FONT_HERSHEY_DUPLEX,
-                    0.8, (195, 34, 34), 2, cv2.LINE_AA)
+            cv2.putText(image, text, (175, 30), cv2.FONT_HERSHEY_DUPLEX,
+                    0.8, (30, 200, 30), 2, cv2.LINE_AA)
 
         if (res == SUCCESS):
             self.counter += 1

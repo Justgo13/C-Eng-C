@@ -3,6 +3,7 @@ from Steps.base_step import BaseStep
 from Steps.mask_step import MaskStep
 from Steps.vaccine_step import VaccinePassportStep
 from Steps.assessment_step import AssessmentStep
+from Steps.door_open_step import DoorOpenStep
 
 if __name__ == '__main__':
 
@@ -11,7 +12,9 @@ if __name__ == '__main__':
     mask_step = MaskStep()
     vaccine_step = VaccinePassportStep()
     assessment_step = AssessmentStep()
-    steps = [assessment_step]
+    door_open = DoorOpenStep()
+
+    steps = [ mask_step, vaccine_step, assessment_step, door_open]
     # open files
 
     # setting up image

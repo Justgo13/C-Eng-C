@@ -6,8 +6,8 @@ import cv2
 class AssessmentStep(BaseStep):
 
     def __init__(self):
-        super().__init__("Self Test", "Scan your self test result", 15)
-        TESS_DIR = '/usr/bin/tesseract'
+        super().__init__("Self Test", "Scan your self test result", 30)
+        TESS_DIR = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
         pytesseract.pytesseract.tesseract_cmd = TESS_DIR
         pass
 
@@ -15,14 +15,24 @@ class AssessmentStep(BaseStep):
         today = date.today()
         today = '{0} {1}'.format(today.strftime('%B'), today.day).upper()
         text = pytesseract.image_to_string(image)
-        image = cv2.flip(image, 1)
         h, w, _ = image.shape
         boxes = pytesseract.image_to_boxes(image)
         for b in boxes.splitlines():
             b = b.split(' ')
-            image = cv2.rectangle(image, (int(b[1]), h - int(b[2])), (int(b[3]), h - int(b[4])), (0, 255, 0), 2)
+            cv2.rectangle(image, (int(b[1]), h - int(b[2])), (int(b[3]), h - int(b[4])), (0, 255, 0), 2)
             pass
-        return AssessmentStep.SUCCESS if today in text.upper() else AssessmentStep.RUNNING
+
+        verified = today in text.upper()
+        if verified:
+            text = 'Thank you. The door will now open for you.'
+            cv2.putText(image, text, (20, 30), cv2.FONT_HERSHEY_DUPLEX,
+                        0.8, (30, 200, 30), 2, cv2.LINE_AA)
+        else:
+            text = 'Please show your COVID-19 self assessment'
+            cv2.putText(image, text, (20, 30), cv2.FONT_HERSHEY_DUPLEX,
+                    0.8, (30, 30, 200), 2, cv2.LINE_AA)
+
+        return BaseStep.SUCCESS if verified else BaseStep.RUNNING
 
     pass
 

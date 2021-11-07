@@ -17,13 +17,16 @@ class MaskStep(BaseStep):
 
         if res == 'neither':
             text = 'Welcome to Carleton'
+            cv2.putText(image, text, (175, 30), cv2.FONT_HERSHEY_DUPLEX,
+                        0.8, (30, 30, 200), 2, cv2.LINE_AA)
         if res == 'no_mask':
             text = "Please wear your mask"
+            cv2.putText(image, text, (175, 30), cv2.FONT_HERSHEY_DUPLEX,
+                        0.8, (30, 30, 200), 2, cv2.LINE_AA)
         if res == 'mask':
             text = 'Thank you for your mask'
-
-        cv2.putText(image, text, (175, 30), cv2.FONT_HERSHEY_DUPLEX,
-                    0.8, (195, 34, 34), 2, cv2.LINE_AA)
+            cv2.putText(image, text, (175, 30), cv2.FONT_HERSHEY_DUPLEX,
+                        0.8, (30, 200, 30), 2, cv2.LINE_AA)
 
         if (res == 'mask'):
             self.counter += 1
