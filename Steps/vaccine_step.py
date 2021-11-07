@@ -7,9 +7,9 @@ from qr_code_detection.qr_code import draw_rectangle_on_QR, SUCCESS, FAIL
 class VaccinePassportStep(BaseStep):
 
     def __init__(self):
-        super().__init__("Vaccine Passport", "Scan the QR Code for your Proof of Vaccination", 15)
+        super().__init__("Vaccine Passport", "Scan the QR Code for your Proof of Vaccination", 30)
         self.counter = 0
-        self.threshold = 10
+        self.threshold = 15
         pass
 
     def _run_step(self, image) -> int:
@@ -26,6 +26,7 @@ class VaccinePassportStep(BaseStep):
         if (res == SUCCESS):
             self.counter += 1
             if (self.counter > self.threshold):
+                self.counter = 0
                 return BaseStep.SUCCESS
         else:
             self.counter = 0

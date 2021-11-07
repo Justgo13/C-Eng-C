@@ -6,7 +6,7 @@ from face_mask_detection.face_detector import FaceMaskDetector
 class MaskStep(BaseStep):
 
     def __init__(self):
-        super().__init__("Mask", "Ensure you are wearing a mask", 10)
+        super().__init__("Mask", "Ensure you are wearing a mask", 30)
         self.model = FaceMaskDetector()
         self.counter = 0
         self.threshold = 30
@@ -31,4 +31,5 @@ class MaskStep(BaseStep):
                 return BaseStep.SUCCESS
         else:
             self.counter = 0
+        print(self.counter)
         return BaseStep.RUNNING

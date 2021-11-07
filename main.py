@@ -24,11 +24,13 @@ if __name__ == '__main__':
         #  run screening step
         status = steps[current].run(frame)
         if status == BaseStep.FAIL:
+            steps[current].reset()
             current = 0  # reset
         elif status == BaseStep.SUCCESS and current == len(steps)-1:
             exit(0)
             pass # open door step??
         elif status == BaseStep.SUCCESS:
+            steps[current].reset()
             current = (current+1) % len(steps)  # proceed to next step
             pass
 

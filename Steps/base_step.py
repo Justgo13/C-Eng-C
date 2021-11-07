@@ -63,7 +63,15 @@ class BaseStep:
         returns true if the step timed out
         :return true if the step timed out:
         """
-        return timeit.default_timer() - self.start >= self.timeout
+        timeout = timeit.default_timer() - self.start >= self.timeout
+        if timeout:
+            self.reset()
+            return True
+        return False
+
+    def reset(self):
+        self.__status = BaseStep.START
+
 
     pass
 
