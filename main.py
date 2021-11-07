@@ -1,6 +1,8 @@
 import ScreeningStep
 import cv2
 
+configuration = {}
+
 
 if __name__ == '__main__':
 
@@ -10,7 +12,17 @@ if __name__ == '__main__':
     step2 = ScreeningStep.ExampleStep('STEP2')
     steps = [step, step2]
     # open files
-
+    with open('config.txt', 'r') as config:
+        for line in config:
+            if len(line) == 0:
+                continue
+            name, setting = line.split(':')
+            name = name.strip()
+            setting = setting.strip()
+            configuration[name] = setting
+            pass
+        pass
+    exit(0)
     # setting up image
     vid = cv2.VideoCapture(0)
 

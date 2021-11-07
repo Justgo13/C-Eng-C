@@ -1,0 +1,2 @@
+TESSERACT:/usr/bin/tesseract
+BUILDING:Carleton
