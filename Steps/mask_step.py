@@ -6,7 +6,7 @@ from face_mask_detection.face_detector import FaceMaskDetector
 class MaskStep(BaseStep):
 
     def __init__(self):
-        super().__init__("Mask", "Ensure you are wearing a mask", 10)
+        super().__init__("Mask", "Ensure you are wearing a mask", 30)
         self.model = FaceMaskDetector()
         self.counter = 0
         self.threshold = 30
@@ -17,13 +17,16 @@ class MaskStep(BaseStep):
 
         if res == 'neither':
             text = 'Welcome to Carleton'
+            cv2.putText(image, text, (175, 30), cv2.FONT_HERSHEY_DUPLEX,
+                        0.8, (30, 30, 200), 2, cv2.LINE_AA)
         if res == 'no_mask':
             text = "Please wear your mask"
+            cv2.putText(image, text, (175, 30), cv2.FONT_HERSHEY_DUPLEX,
+                        0.8, (30, 30, 200), 2, cv2.LINE_AA)
         if res == 'mask':
             text = 'Thank you for your mask'
-
-        cv2.putText(image, text, (175, 30), cv2.FONT_HERSHEY_DUPLEX,
-                    0.8, (195, 34, 34), 2, cv2.LINE_AA)
+            cv2.putText(image, text, (175, 30), cv2.FONT_HERSHEY_DUPLEX,
+                        0.8, (30, 200, 30), 2, cv2.LINE_AA)
 
         if (res == 'mask'):
             self.counter += 1
@@ -33,4 +36,3 @@ class MaskStep(BaseStep):
             self.counter = 0
         print(self.counter)
         return BaseStep.RUNNING
-    pass
