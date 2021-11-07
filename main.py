@@ -2,6 +2,8 @@ import cv2
 from Steps.base_step import BaseStep
 from Steps.mask_step import MaskStep
 
+configuration = {}
+
 if __name__ == '__main__':
 
     print('Program Start')
@@ -9,7 +11,16 @@ if __name__ == '__main__':
     step = MaskStep()
     steps = [step]
     # open files
-
+    with open('config.txt', 'r') as config:
+        for line in config:
+            if len(line) == 0:
+                continue
+            name, setting = line.split(':')
+            name = name.strip()
+            setting = setting.strip()
+            configuration[name] = setting
+            pass
+        pass
     # setting up image
     vid = cv2.VideoCapture(0)
 
