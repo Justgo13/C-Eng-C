@@ -22,7 +22,6 @@ if __name__ == '__main__':
             configuration[name] = setting
             pass
         pass
-    exit(0)
     # setting up image
     vid = cv2.VideoCapture(0)
 
