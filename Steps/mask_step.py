@@ -13,7 +13,10 @@ class MaskStep(BaseStep):
         pass
 
     def _run_step(self, image) -> int:
-        res, image = self.model.detect_face(image)
+        result_list, image = self.model.detect_face(image)
+        res = None
+        if len(result_list) > 0:
+            res = result_list[0]
 
         if res == 'neither':
             text = 'Welcome to Carleton'
@@ -23,10 +26,11 @@ class MaskStep(BaseStep):
             text = "Please wear your mask"
             cv2.putText(image, text, (175, 30), cv2.FONT_HERSHEY_DUPLEX,
                         0.8, (30, 30, 200), 2, cv2.LINE_AA)
-        if res == 'mask':
-            text = 'Thank you for your mask'
-            cv2.putText(image, text, (175, 30), cv2.FONT_HERSHEY_DUPLEX,
-                        0.8, (30, 200, 30), 2, cv2.LINE_AA)
+        if len(result_list) > 0:
+            if all(i == 'mask' for i in result_list):
+                text = 'Thank you for your mask'
+                cv2.putText(image, text, (175, 30), cv2.FONT_HERSHEY_DUPLEX,
+                            0.8, (30, 200, 30), 2, cv2.LINE_AA)
 
         if (res == 'mask'):
             self.counter += 1
