@@ -2,6 +2,7 @@ import cv2
 from Steps.base_step import BaseStep
 from Steps.mask_step import MaskStep
 from Steps.vaccine_step import VaccinePassportStep
+from Steps.assessment_step import AssessmentStep
 
 if __name__ == '__main__':
 
@@ -9,7 +10,8 @@ if __name__ == '__main__':
     # declare steps
     mask_step = MaskStep()
     vaccine_step = VaccinePassportStep()
-    steps = [mask_step, vaccine_step]
+    assessment_step = AssessmentStep()
+    steps = [assessment_step]
     # open files
 
     # setting up image
