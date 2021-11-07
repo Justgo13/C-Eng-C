@@ -1,0 +1,9 @@
+opencv-python==4.5.4.58
+numpy==1.21.4
+tqdm==4.62.3
+tensorflow==2.7.0
+scikit-learn==1.0.1
+qrtools==0.0.2
+mediapipe==0.8.9
+Pillow==8.4.0
+pyzbar==0.1.8

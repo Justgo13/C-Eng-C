@@ -31,6 +31,4 @@ class MaskStep(BaseStep):
                 return BaseStep.SUCCESS
         else:
             self.counter = 0
-        print(self.counter)
         return BaseStep.RUNNING
-    pass

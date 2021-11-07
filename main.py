@@ -1,13 +1,15 @@
 import cv2
 from Steps.base_step import BaseStep
 from Steps.mask_step import MaskStep
+from Steps.vaccine_step import VaccinePassportStep
 
 if __name__ == '__main__':
 
     print('Program Start')
     # declare steps
-    step = MaskStep()
-    steps = [step]
+    mask_step = MaskStep()
+    vaccine_step = VaccinePassportStep()
+    steps = [mask_step, vaccine_step]
     # open files
 
     # setting up image
