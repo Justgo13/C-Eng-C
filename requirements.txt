@@ -6,3 +6,4 @@ scikit-learn==1.0.1
 mediapipe==0.8.9
 Pillow==8.4.0
 pyzbar==0.1.8
+pytesseract==0.3.8
