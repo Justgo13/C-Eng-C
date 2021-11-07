@@ -30,7 +30,7 @@ if __name__ == '__main__':
             current = (current+1) % len(steps)  # proceed to next step
             pass
 
-        cv2.imshow('frame', cv2.flip(frame, 1))  # show flipped screen for easier time
+        cv2.imshow('frame', frame)  # show flipped screen for easier time
         # exit application on request
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
