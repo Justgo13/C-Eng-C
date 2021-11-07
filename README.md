@@ -1,10 +1,18 @@
 # C-Eng-C
-How to use:
+## Setting up virtual environment ##
 
-Install all the required libraries 
+#### Mac OS / Linux ####
+source venv/Lib/activate
 
-Install Tesseract and link your pytesseract to it's location 
+pip3 install -r requirements.txt
 
-Tutorials are highly recommended (https://pypi.org/project/pytesseract/) (https://www.google.com/search?q=tesseract+python+medium&ei=9GiHYYfaOJCqwbkPpqKGuAU&oq=tesseract+python+medium&gs_lcp=Cgdnd3Mtd2l6EAMyBggAEBYQHjoHCAAQRxCwAzoHCAAQsAMQQzoECAAQQzoFCAAQgARKBAhBGABQ1AFY5Q5g6w9oAXACeACAAVOIAZgEkgEBN5gBAKABAcgBCsABAQ&sclient=gws-wiz&ved=0ahUKEwiHpI2Kx4X0AhUQVTABHSaRAVcQ4dUDCA4&uact=5)
+#### Windows ####
+venv/Lib/activate.bat
 
-Double click main.py and follow instructions
+pip3 install -r requirements.txt
+
+
+## Building the executable ##
+pyinstaller --onefile -y main.spec
+
+The executable will be created in dist/main.exe
