@@ -6,7 +6,7 @@ import cv2
 class AssessmentStep(BaseStep):
 
     def __init__(self):
-        super().__init__("Self Test", "Scan your self test result", 30)
+        super().__init__("Self Test", "Scan your self test result", 100)
         TESS_DIR = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
         pytesseract.pytesseract.tesseract_cmd = TESS_DIR
         pass

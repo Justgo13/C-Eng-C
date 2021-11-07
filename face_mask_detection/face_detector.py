@@ -9,7 +9,7 @@ class FaceMaskDetector:
 
     def __init__(self):
         # Load the model
-        self.model = load_model('face_mask_detection/model1.h5')
+        self.model = load_model('face_mask_detection/model2.h5')
         # Load MediaPipe Face Detection
         self.face_detection = mp.solutions.face_detection.FaceDetection()
 
