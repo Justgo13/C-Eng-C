@@ -1,15 +1,20 @@
+import os
+
 import cv2
 import mediapipe as mp
 import numpy as np
-import tensorflow as tf
 from tensorflow.keras.models import load_model
+
+from misc.misc import get_git_root
 
 
 class FaceMaskDetector:
 
     def __init__(self):
+        git_root = get_git_root()
         # Load the model
-        self.model = load_model('face_mask_detection/model3.h5')
+        model_path = os.path.join(git_root, "face_mask_detection", "model3.h5")
+        self.model = load_model(model_path)
         # Load MediaPipe Face Detection
         self.face_detection = mp.solutions.face_detection.FaceDetection()
 
