@@ -2,12 +2,12 @@
 ## Setting up virtual environment ##
 
 #### Mac OS / Linux ####
-source venv/Lib/activate
+source venv/Scripts/activate
 
 pip3 install -r requirements.txt
 
 #### Windows ####
-venv/Lib/activate.bat
+venv/Scripts/activate.bat
 
 pip3 install -r requirements.txt
 

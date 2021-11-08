@@ -2,9 +2,12 @@
 # Source: https://projectgurukul.org/face-mask-detection/
 
 # Import necessary packages
+import os
+
 import cv2
 import uuid
 import mediapipe as mp
+from misc.misc import get_git_root
 
 # Define mediapipe Face detector
 face_detection = mp.solutions.face_detection.FaceDetection(0.6)
@@ -39,7 +42,8 @@ def get_detection(frame):
 cap = cv2.VideoCapture(0)
 count = 0
 
-class_path = 'mask'
+class_path = 'mask' # values are mask and no_mask
+git_root = get_git_root()
 while True:
     _, frame = cap.read()
     img = frame.copy()
@@ -50,8 +54,7 @@ while True:
         
         # Crop only the face part from the frame
         crop_img = img[y:y+h, x:x+w]
-        abs = "C:/Harjap/FaceMaskHackathon/face-mask-detection-opencv/"
-        filename = abs + "Data/"+class_path+"/"+str(uuid.uuid4())+".jpg"
+        filename = os.path.join(git_root, "face-mask-detection", "Data", class_path, str(uuid.uuid4())) + ".jpg"
 
         print(filename)
         # Save the image to the destination path
