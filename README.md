@@ -1,4 +1,10 @@
 # C-Eng-C
+
+## Installing pytesseract ##
+
+https://nanonets.com/blog/ocr-with-tesseract/#installingtesseract
+
+
 ## Setting up virtual environment ##
 
 #### Mac OS / Linux ####
