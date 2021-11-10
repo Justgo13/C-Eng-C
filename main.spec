@@ -1,4 +1,5 @@
 # -*- mode: python ; coding: utf-8 -*-
+import os
 from pyzbar import pyzbar
 from pathlib import Path
 
@@ -8,7 +9,8 @@ block_cipher = None
 a = Analysis(['main.py'],
              pathex=['venv/Lib/site-packages/'],
              binaries=[],
-             datas=[('venv\\Lib\\site-packages\\mediapipe\\modules', 'mediapipe\\modules'), ('face_mask_detection\\model3.h5', 'face_mask_detection')],
+             datas=[(os.path.join('venv', 'Lib', 'python3.9', 'site-packages', 'mediapipe', 'modules'), os.path.join('mediapipe', 'modules')),
+              (os.path.join('face_mask_detection', 'model3.h5'), 'face_mask_detection')],
              hiddenimports=[],
              hookspath=[],
              hooksconfig={},

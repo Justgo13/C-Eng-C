@@ -2,12 +2,18 @@ from Steps.base_step import BaseStep
 import pytesseract
 from datetime import date
 import cv2
+import platform
 
 class AssessmentStep(BaseStep):
 
     def __init__(self):
         super().__init__("Self Test", "Scan your self test result", 100)
-        TESS_DIR = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
+        os_name = platform.system()
+        TESS_DIR = ""
+        if os_name == "Windows":
+            TESS_DIR = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
+        elif os_name == "Darwin":
+            TESS_DIR = '/usr/local/Cellar/tesseract/4.1.1/bin/tesseract'
         pytesseract.pytesseract.tesseract_cmd = TESS_DIR
         pass
 
