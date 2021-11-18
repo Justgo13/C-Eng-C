@@ -1,4 +1,4 @@
-# C-Eng-C
+# Carleton Covid Screening Computer Vision
 Project created during Carleton Engineering Programming Competition. 
 
 <h3>Problem Statement:</h3>
